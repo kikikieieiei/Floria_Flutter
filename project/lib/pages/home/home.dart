@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,11 +18,11 @@ class _HomeState extends State<Home> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 90, horizontal: 30),
             child: TextFormField(
-              cursorColor: Color(0xffC33355),
-              style: TextStyle(color: Color(0xffC33355)),
+              cursorColor: const Color(0xffC33355),
+              style: const TextStyle(color: Color(0xffC33355)),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Color(0xffF9DDE3),
+                fillColor: const Color(0xffF9DDE3),
                 isDense: true,
                 prefixIcon: const Icon(
                   Icons.search,
@@ -39,20 +40,47 @@ class _HomeState extends State<Home> {
                   borderSide: BorderSide.none
                 ),
               ),
-            )
-          )
+            ),
+          ),
+          Expanded(
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: 200.0,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                aspectRatio: 16 / 9,
+              ),
+              items: [1, 2, 3, 4, 5].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: BoxDecoration(color: Colors.amber),
+                      child: Image.asset("name")
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+          ),
         ],
       ),
+
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         backgroundColor: Colors.white,
-        selectedItemColor: Color(0xffC33355),
-        unselectedItemColor: Color(0xffF9DDE3),
+        selectedItemColor: const Color(0xffC33355),
+        unselectedItemColor: const Color(0xffF9DDE3),
         items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
-      ]),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
+        ]
+      ),
     );
   }
 }
