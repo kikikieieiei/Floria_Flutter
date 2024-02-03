@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:project/pages/home/components/carousel.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> {
         children: [
           // Search bar
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 90, horizontal: 30),
+            padding: const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 0),
             child: TextFormField(
               cursorColor: const Color(0xffC33355),
               style: const TextStyle(color: Color(0xffC33355)),
@@ -42,28 +43,7 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          Expanded(
-            child: CarouselSlider(
-              options: CarouselOptions(
-                height: 200.0,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 16 / 9,
-              ),
-              items: [1, 2, 3, 4, 5].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(color: Colors.amber),
-                      child: Image.asset("name")
-                    );
-                  },
-                );
-              }).toList(),
-            ),
-          ),
+          buildCarouselSlider()
         ],
       ),
 
