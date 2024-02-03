@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:project/pages/home/components/carousel.dart';
+import 'package:project/pages/home/components/circleButton.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,7 +17,8 @@ class _HomeState extends State<Home> {
         children: [
           // Search bar
           Padding(
-            padding: const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 0),
+            padding:
+                const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 0),
             child: TextFormField(
               cursorColor: const Color(0xffC33355),
               style: const TextStyle(color: Color(0xffC33355)),
@@ -37,30 +38,43 @@ class _HomeState extends State<Home> {
                     fontSize: 14,
                     fontFamily: 'OpenSans'),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(45),
-                  borderSide: BorderSide.none
-                ),
+                    borderRadius: BorderRadius.circular(45),
+                    borderSide: BorderSide.none),
               ),
             ),
           ),
-          buildCarouselSlider()
+          buildCarouselSlider(),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildCircularButton(
+                  Icons.shopping_bag, "All", () => print('Button All pressed')),
+                buildCircularButton(
+                  Icons.shopping_bag, "Bouquet", () => print('Button Bouquet pressed')),
+                buildCircularButton(
+                  Icons.shopping_bag, "Vase", () => print('Button Vase pressed')),
+                buildCircularButton(
+                  Icons.shopping_bag, "Flower", () => print('Button Flower pressed')),
+              ],
+            ),
+          ),
         ],
       ),
-
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xffC33355),
-        unselectedItemColor: const Color(0xffF9DDE3),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
-        ]
-      ),
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: Colors.white,
+          selectedItemColor: const Color(0xffC33355),
+          unselectedItemColor: const Color(0xffF9DDE3),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
+          ]),
     );
   }
 }
