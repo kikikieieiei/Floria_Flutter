@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
 
-Widget buildCircularButton(IconData icon, String label, Function onPressed) {
+Widget buildCircularButton(String svgPath, String label, Function onPressed) {
   return GestureDetector(
     onTap: () {
       onPressed();
@@ -17,20 +18,22 @@ Widget buildCircularButton(IconData icon, String label, Function onPressed) {
               color: Color(0xffF9DDE3),
             ),
             child: Center(
-              child: Icon(
-                icon,
-                color: Color(0xffC33355),
-              ),
+            child: SvgPicture.asset(
+              svgPath,
+              width: 30,
+              height: 30,
+              color: Color(0xffC33355),
             ),
+          ),
           ),
         ),
         SizedBox(height: 8),
         Text(
           label,
           style: const TextStyle(
-            color: Color.fromARGB(255, 227, 141, 159),
+            color: Color(0xffC33355),
             // fontWeight: FontWeight.bold,
-            fontSize: 12,
+            fontSize: 13,
             fontFamily: 'OpenSans',
           ),
         ),

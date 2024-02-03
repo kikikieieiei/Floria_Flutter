@@ -49,17 +49,29 @@ class _HomeState extends State<Home> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                buildCircularButton(
-                  Icons.shopping_bag, "All", () => print('Button All pressed')),
-                buildCircularButton(
-                  Icons.shopping_bag, "Bouquet", () => print('Button Bouquet pressed')),
-                buildCircularButton(
-                  Icons.shopping_bag, "Vase", () => print('Button Vase pressed')),
-                buildCircularButton(
-                  Icons.shopping_bag, "Flower", () => print('Button Flower pressed')),
+                buildCircularButton("assets/icons/all.svg", "All",
+                    () => print('Button All pressed')),
+                buildCircularButton("assets/icons/bouquet.svg", "Bouquet",
+                    () => print('Button Bouquet pressed')),
+                buildCircularButton("assets/icons/vase.svg", "Vase",
+                    () => print('Button Vase pressed')),
+                buildCircularButton("assets/icons/flower.svg", "Flower",
+                    () => print('Button Flower pressed')),
               ],
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30, top: 15),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text("Popular", style: TextStyle(
+                fontFamily: "OpenSans",
+                color: Color(0xffC33355),
+                fontWeight: FontWeight.bold,
+                fontSize: 25
+              ),),
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
