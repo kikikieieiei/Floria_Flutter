@@ -10,8 +10,8 @@ Widget buildCircularButton(IconData icon, String label, Function onPressed) {
         Padding(
           padding: const EdgeInsets.only(top: 30),
           child: Container(
-            height: 60, // Adjust the height according to your needs
-            width: 60, // Adjust the width according to your needs
+            height: 60, 
+            width: 60, 
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Color(0xffF9DDE3),
