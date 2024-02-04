@@ -11,20 +11,26 @@ Widget buildCircularButton(String svgPath, String label, Function onPressed) {
         Padding(
           padding: const EdgeInsets.only(top: 30),
           child: Container(
-            height: 60, 
-            width: 60, 
+            height: 60,
+            width: 60,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Color(0xffF9DDE3),
+              boxShadow: [BoxShadow(
+                color: Colors.grey,
+                blurRadius: 5.0,
+                spreadRadius: 1.0,
+                offset: Offset(0, 3.0),
+              ),]
             ),
             child: Center(
-            child: SvgPicture.asset(
-              svgPath,
-              width: 30,
-              height: 30,
-              color: Color(0xffC33355),
+              child: SvgPicture.asset(
+                svgPath,
+                width: 30,
+                height: 30,
+                color: Color(0xffC33355),
+              ),
             ),
-          ),
           ),
         ),
         SizedBox(height: 8),
