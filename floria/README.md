@@ -1,8 +1,5 @@
 # Floria
 
-![Flutter](https://img.shields.io/badge/Flutter-2.10.0-blue)
-![Dart](https://img.shields.io/badge/Dart-2.15.0-blue)
-
 ## Overview
 This Flutter project is a mobile application for selling flowers.
 
