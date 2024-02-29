@@ -7,7 +7,7 @@ This Flutter project is a selling flowers application project.
 1. Clone the repository:
    git clone https://github.com/petetinunt/Bidibub-bidiboo.git
 2. Navigate to the project directory:
-   cd flower-seller-app
+   cd floria
 3. flutter pub get
 
 ## Usage
