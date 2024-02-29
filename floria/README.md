@@ -1,7 +1,7 @@
 # Floria
 
 ## Overview
-This Flutter project is a selling flowers application project.
+This Flutter project is a flower shop application.
 
 ## Installation
 1. Clone the repository:
