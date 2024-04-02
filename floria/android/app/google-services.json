@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "346088569639",
+    "project_id": "floria-5b884",
+    "storage_bucket": "floria-5b884.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346088569639:android:c9284d34ac5f73311ec702",
+        "android_client_info": {
+          "package_name": "com.example.floria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXSXnd2BB9U2baj-Sf3NPprfCalj1A_Hk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

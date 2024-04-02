@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class QuantityButton extends StatefulWidget {
   final int initialQuantity;
   final ValueChanged<int> onQuantityChanged;
-  final DocumentSnapshot<Map<String, dynamic>> userDocumentSnapshot;
-  final Map<String, dynamic> item;
 
   const QuantityButton({
     Key? key,
     required this.initialQuantity,
     required this.onQuantityChanged,
-    required this.userDocumentSnapshot,
-    required this.item,
   }) : super(key: key);
 
   @override
@@ -21,7 +15,7 @@ class QuantityButton extends StatefulWidget {
 }
 
 class _QuantityButtonState extends State<QuantityButton> {
-  late int _quantity;
+  int _quantity = 0;
 
   @override
   void initState() {
@@ -29,47 +23,19 @@ class _QuantityButtonState extends State<QuantityButton> {
     _quantity = widget.initialQuantity;
   }
 
-  void updateFirestoreQuantity(int quantity, String productID) async {
-    DocumentReference userRef = FirebaseFirestore.instance
-        .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid);
-
-    DocumentSnapshot<Map<String, dynamic>> userSnapshot =
-        await userRef.get() as DocumentSnapshot<Map<String, dynamic>>;
-    List<dynamic> carts =
-        List.from((userSnapshot.data()?['carts'] as List?)?.cast() ?? []);
-
-    // Find the index of the item to update
-    int itemIndex =
-        carts.indexWhere((item) => item['product']['id'] == productID);
-
-    if (itemIndex != -1) {
-      // Update the quantity of the existing item
-      carts[itemIndex]['quantity'] = quantity;
-    }
-
-    userRef.update({
-      'carts': carts,
-    }).then((value) {
-      print('Quantity updated in Firestore');
-    }).catchError((error) {
-      print('Error updating quantity: $error');
-    });
-  }
-
   void _decrementQuantity() {
-    if (_quantity > 1) {
-      _quantity--;
-      widget.onQuantityChanged(_quantity);
-      updateFirestoreQuantity(_quantity, widget.item['product']['id']);
-    }
+    setState(() {
+      if (_quantity > 1) {
+        _quantity--;
+        widget.onQuantityChanged(_quantity);
+      }
+    });
   }
 
   void _incrementQuantity() {
     setState(() {
       _quantity++;
       widget.onQuantityChanged(_quantity);
-      updateFirestoreQuantity(_quantity, widget.item['product']['id']);
     });
   }
 
